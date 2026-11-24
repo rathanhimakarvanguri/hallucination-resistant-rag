@@ -169,6 +169,7 @@ def main():
     all_chunks = []
     for issuer in ("rbi", "sebi"):
         folder = config.RAW_DIR / issuer
+        folder.mkdir(parents=True, exist_ok=True)   # a fresh clone has no data folders (they are git-ignored)
         pdfs = sorted(folder.glob("*.pdf"))
         for pdf in pdfs:
             try:
